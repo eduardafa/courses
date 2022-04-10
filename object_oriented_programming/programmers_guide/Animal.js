@@ -25,7 +25,7 @@ class Animal {
 class Dog extends Animal {
     // instance using the attributes of the parent class
     constructor(name, age, price, breed, color, weight) {
-        // attributes from parent class
+        // attributes from parent class (super class)
         super(name, age, price);
         // attributes from child class
         this.breed = breed;

@@ -1,5 +1,5 @@
 // default import
-import chalk from 'chalk';
+// import chalk from 'chalk';
 import fs from 'fs'; // file system
 
 function extractLinks(data) {
@@ -25,7 +25,7 @@ function extractLinks(data) {
 
 // dealing with errors
 function handlesError(err) {
-    throw new Error(chalk.red(err));
+    throw new Error(err);
     // throw new Error(chalk.red(err.code, 'Something is wrong!'));
 }
 
@@ -38,7 +38,7 @@ async function getFile(path) {
     } catch (err) {
         handlesError(err);
     } finally {
-        console.log(chalk.yellow('Operation completed!'));
+        console.log('Operation completed!');
     }
 }
 
