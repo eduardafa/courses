@@ -14,8 +14,57 @@ class User {
         this.#active = active;
     }
 
+    // acessors functions: getters and setters
+    // getters never take any arguments
+    // accessing properties
+    get name() {
+        return this.#name;
+    }
+
+    get email() {
+        return this.#email;
+    }
+
+    get birth() {
+        return this.#birth;
+    }
+
+    get role() {
+        return this.#role;
+    }
+
+    get active() {
+        return this.#active;
+    }
+
+    // setters accept one only parameter
+    // setting properties
+    set name(newName) {
+        // if newName is an empty string
+        if (newName === '') {
+            throw new Error('Not valid format!');
+        }
+        this.#name = newName;
+    }
+
+    // // private method
+    // #buildObjUser() {
+    //     return {
+    //         name: this.#name,
+    //         email: this.#email,
+    //         birth: this.#birth,
+    //         role: this.#role,
+    //         active: this.#active,
+    //     };
+    // }
+
+    // public method
     displayInfo() {
-        return `${this.#name}, ${this.#email}`;
+        // const objUser = this.#buildObjUser();
+        // return `${objUser.name}, ${objUser.email}, ${objUser.birth}, ${objUser.role}, ${objUser.active}`;
+
+        // after creating getters and setters, this method should be write like this:
+        return `${this.name}, ${this.email}, ${this.birth}, ${this.role}, ${this.active}`;
     }
 }
 
