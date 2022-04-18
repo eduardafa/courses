@@ -4,32 +4,23 @@ class BookController {
     // methods
     // GET
     static listBooks = (req, res) => {
-        books
-            // finding the book
-            .find()
-            // populate with author data
-            .populate('author')
-            // and then execute this verification
-            .exec((err, books) => {
-                res.status(200).json(books);
-            });
+        books.find((err, books) => {
+            res.status(200).json(books);
+        });
     };
 
     static listBookId = (req, res) => {
         const id = req.params.id;
 
-        books
-            .findById(id)
-            .populate('author', 'name')
-            .exec((err, books) => {
-                if (err) {
-                    res.status(400).send({
-                        message: `${err.message} - book id not found!`,
-                    });
-                } else {
-                    res.status(200).send(books);
-                }
-            });
+        books.findById(id, (err, books) => {
+            if (err) {
+                res.status(400).send({
+                    message: `${err.message} - book id not found!`,
+                });
+            } else {
+                res.status(200).send(books);
+            }
+        });
     };
 
     // POST
@@ -78,19 +69,6 @@ class BookController {
                 res.status(200).send({
                     message: `Book removed successfully!`,
                 });
-            }
-        });
-    };
-
-    // different query
-    static listBookByPublisher = (req, res) => {
-        const publisher = req.query.publisher;
-
-        books.find({ publisher: publisher }, {}, (err, books) => {
-            if (!err) {
-                res.status(200).send(books);
-            } else {
-                res.status(500).send({ message: err.message });
             }
         });
     };
